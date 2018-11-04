@@ -1,3 +1,4 @@
+import { User } from './address-card/user.module';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = 'ytbasic';
+  user: User;
+  inputText: string = "Initial Value";
+
+  constructor(){
+    this.user = new User();
+    this.user.name = "Foo Bar";
+    this.user.designation = "Software Engineer";
+    this.user.address = "1000 Street City State"
+    this.user.phone = [
+      '123-111-1111',
+      '122-444-3333'
+    ]
+  }
+
 }
