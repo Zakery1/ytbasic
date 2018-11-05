@@ -1,22 +1,24 @@
+import { TestService } from './test.service';
+import { ViewModule } from './view/view.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddressCardComponent } from './address-card/address-card.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddressCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule 
+    HttpClientModule,
+    ViewModule
   ],
-  providers: [],
+  providers: [
+    TestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

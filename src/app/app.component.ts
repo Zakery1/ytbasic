@@ -1,5 +1,7 @@
-import { User } from './address-card/user.module';
+import { HttpClient } from '@angular/common/http';
+
 import { Component } from '@angular/core';
+import { TestService } from './test.service';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user: User;
-  inputText: string = "Initial Value";
 
-  constructor(){
-    this.user = new User();
-    this.user.name = "Foo Bar";
-    this.user.designation = "Software Engineer";
-    this.user.address = "1000 Street City State"
-    this.user.phone = [
-      '123-111-1111',
-      '122-444-3333'
-    ]
+  constructor(private svc: TestService, private http: HttpClient){
+    this.svc.printToConsole("Got the service")
   }
 
+  ngOnInit(){
+    let obs = 
+    this.http.get('https://api.github.com/users/zakery1')
+    obs.subscribe((response) => console.log(response))
+  }
 }
